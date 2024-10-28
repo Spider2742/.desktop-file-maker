@@ -14,6 +14,12 @@ bash <(curl -s https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/
 > [!NOTE]
 > For executable and icon, you can just drag and drop the file instead of typing path in terminal
 ## Authors
+> [!TIP]
+> You can add it as a simple command like `make_launerher` using `alias` command
 
+ Example =
+```bash
+alias make_launcher="bash <(curl -s https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/refs/heads/main/launcher%20maker.sh)"
+```
 - [@Spider2742](https://www.github.com/Spider2742)
 
