@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Check if the script is running as root
-if [[ ! $(id -u) -eq 0 ]]; then
-    echo "This script requires root privileges. Please run it with sudo."
-    exit 1
-fi
-
 # Prompt for the name of the .desktop file
 read -p "Enter the name of the .desktop file: " name
 
@@ -61,11 +55,12 @@ Exec=$exec
 Icon=$icon
 Terminal=$terminal
 Type=Application
-Categories=$categories_string
+Categories=${categories_string::-1}  # Remove trailing semicolon
 "
 
-# Create the .desktop file in /usr/share/applications
-desktop_file_path="/usr/share/applications/$name.desktop"
+# Create the .desktop file in the local user's applications directory
+desktop_file_path="$HOME/.local/share/applications/$name.desktop"
+mkdir -p "$HOME/.local/share/applications"  # Ensure the directory exists
 echo "$desktop_file_content" > "$desktop_file_path"
 
 # Check if the file was created successfully
