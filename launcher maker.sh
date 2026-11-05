@@ -15,6 +15,7 @@ clean_path() {
     echo "$p"
 }
 
+main() {
 # Prompt for the name of the .desktop file
 read -r -p "Enter the name of the .desktop file: " name
 while [[ -z "$name" ]]; do
@@ -108,4 +109,13 @@ if [[ -f "$desktop_file_path" ]]; then
     echo "Desktop file created successfully: $desktop_file_path"
 else
     echo "Error creating desktop file."
+fi
+}
+
+# When run as "curl ... | bash", stdin is the script itself, so read the
+# answers from the terminal instead.
+if [[ ! -t 0 ]] && { : </dev/tty; } 2>/dev/null; then
+    main </dev/tty
+else
+    main
 fi

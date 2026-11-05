@@ -7,13 +7,13 @@ Small scripts that put apps in your Linux app menu without any manual setup.
 | [`launcher maker.sh`](launcher%20maker.sh) | Makes a `.desktop` file (app menu entry) for any program or game |
 | [`discord-install.sh`](discord-install.sh) | Installs official Discord from its `.tar.gz` and adds it to your app menu |
 
-Both run straight from the terminal with one command. You don't need to download anything first,
-and neither needs root (`sudo`).
+Both run straight from the terminal with one command, in any shell (bash, zsh, fish). You don't
+need to download anything first, and neither needs root (`sudo`).
 
 ## Launcher maker
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/refs/heads/main/launcher%20maker.sh)
+curl -fsSL https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/main/launcher%20maker.sh | bash
 ```
 
 The script asks for a name, a comment, the program to run, an icon, whether it needs a terminal, and
@@ -26,8 +26,9 @@ menu categories. It then creates the entry in `~/.local/share/applications`.
 > [!TIP]
 > Add it as a simple command like `make_launcher` with an `alias`:
 > ```bash
-> alias make_launcher="bash <(curl -s https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/refs/heads/main/launcher%20maker.sh)"
+> alias make_launcher="curl -fsSL https://raw.githubusercontent.com/Spider2742/.desktop-file-maker/main/launcher%20maker.sh | bash"
 > ```
+> This works in bash, zsh and fish. In fish, use `alias --save` to keep it after you close the terminal.
 
 ## Discord installer
 
